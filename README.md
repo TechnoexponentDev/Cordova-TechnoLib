@@ -8,5 +8,5 @@ Utility ios functions for cordova
 
 <b>Update Steps:</b> First uninstall then install
 
-<b>Usages</b>
+<b>Usages:</b>
 <i>comming sooon...</i>
