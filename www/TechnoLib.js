@@ -10,12 +10,12 @@ function failureCallBack(){
 	console.log('Technolib failure.');
 }
 
-TechnoLib.prototype.technoAlert = function(title,message) {
+TechnoLib.technoAlert = function(title,message) {
 	alert(22);
 	return cordova.exec(successCallback, errorCallback, "TechnoLib", "technoAlert", [title,message]);
 };
 
-TechnoLib.prototype.getUDID = function() {
+TechnoLib.getUDID = function() {
 	alert(23);
 	return cordova.exec(successCallback, errorCallback, "TechnoLib", "getUDID", []);
 };
