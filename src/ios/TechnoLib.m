@@ -7,7 +7,7 @@
 - (void)technoAlert:(CDVInvokedUrlCommand*)command {
 
     CDVPluginResult* pluginResult = nil;
-    
+    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"OK"];
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[command.arguments objectAtIndex:0]
         message:[command.arguments objectAtIndex:1]
         delegate:nil
@@ -25,11 +25,7 @@
 
     CDVPluginResult* pluginResult = nil;
     
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
-    } else {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
-    }
+   pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
 
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
