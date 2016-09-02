@@ -5,35 +5,40 @@
 @synthesize callbackId;
 
 - (void)technoAlert:(CDVInvokedUrlCommand*)command {
-    [self.commandDelegate runInBackground:^{
-        self.callbackId = command.callbackId;
-        
-        [[[UIDevice currentDevice] identifierForVendor] UUIDString];        
 
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[command.arguments objectAtIndex:0]
-            message:[command.arguments objectAtIndex:1]
-            delegate:nil
-            cancelButtonTitle:@"OKKK"
-            otherButtonTitles:nil];
+    CDVPluginResult* pluginResult = nil;
+    NSString* echo = [command.arguments objectAtIndex:0];
 
-        [alertView show];
-        
-        
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[command.arguments objectAtIndex:0]];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
+    if (echo != nil && [echo length] > 0) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
+
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[command.arguments objectAtIndex:0]
+        message:[command.arguments objectAtIndex:1]
+        delegate:nil
+        cancelButtonTitle:@"OKKK"
+        otherButtonTitles:nil];
+
+    [alertView show];
+
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+
+
 }
 
--(NSString *)getUDID:(CDVInvokedUrlCommand*)command {
-    [self.commandDelegate runInBackground:^{
-        self.callbackId = command.callbackId;
+-(void)getUDID:(CDVInvokedUrlCommand*)command { 
 
-        CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"UDID OK"];
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    CDVPluginResult* pluginResult = nil;
+    
+    if (echo != nil && [echo length] > 0) {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[[UIDevice currentDevice] identifierForVendor] UUIDString]];
+    } else {
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+    }
 
-        
-    }];
-    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
 
