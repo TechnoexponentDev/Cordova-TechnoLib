@@ -6,6 +6,7 @@
 
 @property (nonatomic, copy) NSString* callbackId;
 
-- (void)technoAlert:(CDVInvokedUrlCommand*)command;
-- (NSString*)getUDID:(CDVInvokedUrlCommand*)command; 
+- (void) technoAlert:(CDVInvokedUrlCommand*)command;
+
+- (void) getUDID:(CDVInvokedUrlCommand*)command; 
 @end
