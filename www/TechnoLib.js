@@ -1,4 +1,6 @@
-var exec = require('cordova/exec');
+var TechnoLib = function(){
+	
+};
 
 function successCallBack(){
 	console.log('Technolib success.');
@@ -8,14 +10,17 @@ function failureCallBack(){
 	console.log('Technolib failure.');
 }
 
-exports.technoAlert = function(title,message) {
-	exec(successCallback, errorCallback, "TechnoLib", "technoAlert", [title,message]);
+TechnoLib.prototype.technoAlert = function(title,message) {
+	alert(22);
+	return cordova.exec(successCallback, errorCallback, "TechnoLib", "technoAlert", [title,message]);
 };
 
-exports.getUDID = function() {
-	return exec(successCallback, errorCallback, "TechnoLib", "getUDID", []);
+TechnoLib.prototype.getUDID = function() {
+	alert(23);
+	return cordova.exec(successCallback, errorCallback, "TechnoLib", "getUDID", []);
 };
 
 
 
 
+module.exports = TechnoLib;
