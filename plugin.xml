@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	id="cordova-plugin-TechnoLib" version="0.0.1">
+	<name>TechnoLib</name>
+	<description>Many utility functions.</description>
+	<license>Apache 2.0</license>
+	<keywords>objective-c,ios,techno,lib,technoexponent,utility,handyfunctions,udid</keywords>
+	<js-module src="www/TechnoLib.js" name="TechnoLib">
+		<clobbers target="TechnoLib" />
+	</js-module>
+	<platform name="ios">
+		<config-file target="config.xml" parent="/*">
+			<feature name="TechnoLib">
+				<param name="ios-package" value="TechnoLib"/>
+			</feature>
+		</config-file>
+		<header-file src="src/ios/TechnoLib.h" />
+		<source-file src="src/ios/TechnoLib.m" />
+	</platform>
+</plugin>
